@@ -5,7 +5,7 @@ struct PESSOA{
     char Nome;
     int idade;
     int altura;
-}
+};
 
 int main()
 {
