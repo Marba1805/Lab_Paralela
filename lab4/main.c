@@ -23,7 +23,7 @@ int main()
             {
             	while(!arq.eof())
             	{
-            		if (c%3 == 0)
+            	/*	if (c%3 == 0)
                     {
                     	a.nome = 
                     	c++;
@@ -38,7 +38,8 @@ int main()
 						a.altura
 						c++;
                     }
-
+		*/
+		
 				}
 
             } while(1);
