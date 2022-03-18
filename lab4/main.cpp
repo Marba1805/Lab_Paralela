@@ -78,10 +78,6 @@ int main()
 	
 	qsort (Povo, 4, sizeof(PESSOA), compare);
 	
-//	std::string saida;
-//	for(int m = 0; m < 4; m++){
-//		saida += Povo[i].nome;
-//	}
 	
 	FILE *fOutPtr;
 	fOutPtr = fopen("saida.txt", "w");
@@ -98,16 +94,12 @@ int main()
     	char const *pidade = idade.c_str();
     	std::string altura = std::to_string(Povo[i].altura);
     	char const *paltura = altura.c_str();
-		fputs(nome, fOutPtr);
+	fputs(nome, fOutPtr);
     	fputs("\n", fOutPtr);
     	fputs(pidade, fOutPtr);
     	fputs("\n", fOutPtr);
     	fputs(paltura, fOutPtr);
     	fputs("\n", fOutPtr);
-
-    	
-//    	fputs(("%s\n", itoa(Povo[i].idade)), fOutPtr);
-//    	fputs(("%f\n",Povo[i].altura), fOutPtr);
 	}
     fclose(fOutPtr);
 	
