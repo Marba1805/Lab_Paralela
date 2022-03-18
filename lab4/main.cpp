@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <fstream>
-#include <string.h>
+#include <cstring>
+#include <string>
 #include <iostream>
 
 struct PESSOA{
@@ -77,11 +78,11 @@ int main()
 	
 	qsort (Povo, 4, sizeof(PESSOA), compare);
 	
-	std::cout << "Vetor depois da ordenacao" << std::endl;
-	std::string saida;
-	for(int m = 0; m < 4; m++){
-		saida += Povo[i].nome
-	}
+//	std::string saida;
+//	for(int m = 0; m < 4; m++){
+//		saida += Povo[i].nome;
+//	}
+	
 	FILE *fOutPtr;
 	fOutPtr = fopen("saida.txt", "w");
 	if(fOutPtr == NULL)
@@ -90,8 +91,23 @@ int main()
         printf("Unable to create file.\n");
         exit(EXIT_FAILURE);
     }
+ 
     for(int i = 0; i < 4; i++){
-    	fputs("%s\n%d\n%f\n", Povo[i].nome.c_str(), Povo[i].idade, Povo[i].altura);
+    	const char * nome = Povo[i].nome.c_str();
+    	std::string idade = std::to_string(Povo[i].idade);
+    	char const *pidade = idade.c_str();
+    	std::string altura = std::to_string(Povo[i].altura);
+    	char const *paltura = altura.c_str();
+		fputs(nome, fOutPtr);
+    	fputs("\n", fOutPtr);
+    	fputs(pidade, fOutPtr);
+    	fputs("\n", fOutPtr);
+    	fputs(paltura, fOutPtr);
+    	fputs("\n", fOutPtr);
+
+    	
+//    	fputs(("%s\n", itoa(Povo[i].idade)), fOutPtr);
+//    	fputs(("%f\n",Povo[i].altura), fOutPtr);
 	}
     fclose(fOutPtr);
 	
