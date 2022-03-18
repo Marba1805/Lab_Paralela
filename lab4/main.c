@@ -1,29 +1,46 @@
 #include <stdio.h>
-#include <cstdlib>
+#include <stdlib.h>
+#include <fstream>
 
 struct PESSOA{
-    char Nome;
+    char nome[200];
     int idade;
     int altura;
 };
 
 int main()
 {
-     char S1[50];
-     PESSOA Povo[10], P;
-     FILE *Arq;
-     int i;
-
-     leNomeArquivoEntrada(S1);
-     if (abreArquivoAEntrada(Arq, S1) == 1)
+    char S1[50];
+    PESSOA Povo[10], P;
+    FILE *Arq;
+    int i,c;
+	c = 0;
+	struct PESSOA a;
+	std::ofstream arq;
+	arq.open("arquivo.txt");
+     if (arq.is_open())
      {
-            do{
-                    if (leDadosUmaPessoa(P)== 1)
+            {
+            	while(!arq.eof())
+            	{
+            		if (c%3 == 0)
                     {
-                        Povo[i] = P;
-                        i++;
+                    	a.nome = 
+                    	c++;
                     }
-                    else break;
+             		if (c%3 == 1)
+                    {
+                     	a.idade
+						c++; 
+                    }
+            		if (c%3 == 2)
+                    {
+						a.altura
+						c++;
+                    }
+
+				}
+
             } while(1);
             fechaArquivo(Arq);
             ordenaVetor(Povo, i);
