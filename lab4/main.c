@@ -8,6 +8,14 @@ struct PESSOA{
     int altura;
 };
 
+void imprimeVetor(PESSOA *P, int n){
+    for (int i=0; i<n; i++){
+    	printf("\nNome: %s ", P[i].nome);
+    	printf("\nIdade %d ", P[i].idade);
+    	printf("\nAltura %f ", P[i].altura);
+    }
+}
+
 int main()
 {
     char S1[50];
