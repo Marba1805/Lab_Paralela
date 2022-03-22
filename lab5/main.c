@@ -11,7 +11,6 @@ int main(void)
 {
   pid_t cpid;   
   int shm_id;
-  char *patch = "./";
   
   if ((shm_id = shmget(IPC_PRIVATE, 1024, IPC_CREAT | 0770)) == -1){
       printf("Erro no shmget ");
