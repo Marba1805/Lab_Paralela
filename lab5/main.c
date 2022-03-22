@@ -39,6 +39,6 @@ int main(void)
   {
     wait(NULL);
     *varCompart = *varCompart * 10;
-    printf("Valor da variavel compartilhada apos multiplicar por 10 = %i", *varCompart);
+    printf("Valor da variavel compartilhada apos multiplicar por 10 = %i\n", *varCompart);
     }
 }
