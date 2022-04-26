@@ -2,12 +2,11 @@
 
 
 int main() {
-    float aux, s, t;
+    float s, t;
     s = 0;
     for (t=1; t < 11; t++)
     {
-     aux = 1/t;
-     s = s + aux;
+     s = s + 1/t;
     }
     printf("O valor de S é: %f", s);
 }
