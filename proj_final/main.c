@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-#include <semaphore.h>
 
-
-// para compilar:
-// gcc -o tartaruga4 tartaruga4.c -lpthread
 int x, thread_count;
 
 typedef struct info_threads{
@@ -16,20 +12,16 @@ typedef struct info_threads{
 
 void *T(void *info);
 
-sem_t  s;
-
 int main(int argc, char *argv[]){
   // if(argc != 3){
   //   printf("%s\nUtilizacao: insira o x para T(x) como primeiro argumento, e o número de threads como segundo argumento.\nOBS: x precisa ser divisível pelo número de threads.\n", argv[0]);
   //   exit(1);
   // }
-  int sem;
   long thread;
   pthread_t *thread_handles;
-  x = strtoull(argv[1], NULL, 10);
+
+  x = strtoll(argv[1], NULL, 10);
   thread_count = strtol(argv[2], NULL, 10);
-  sem = thread_count/4;
-  sem_init(&s, 0, sem);
 
   /*
    * Divide o numero de threads e compara-o a ate quanto quer fazer aconta
@@ -71,10 +63,8 @@ int main(int argc, char *argv[]){
     soma_global+=*resultado_thread;
     free(resultado_thread);
   }
-  sem_destroy(&s);
   printf("Soma global: %0.32Lf\n", soma_global);
 }
-
 
 void *T(void* info){
   info_threads *infot = (info_threads*) info;
@@ -83,13 +73,11 @@ void *T(void* info){
   int fim = infot->fim+1;
   long double resultado = 0;
   long double *res = malloc(sizeof(float));
-  sem_wait(&s);
-  
+
   for(int i = inicio; i < fim; i++){
     resultado += (double)1/i;
   }
   *(long double*)res = resultado;
   printf("Resultado da thread %d = %.32Lf\n", rank, *res);
-  sem_post(&s);
   return res;
 }
