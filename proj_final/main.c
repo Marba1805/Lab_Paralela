@@ -73,7 +73,6 @@ int main(int argc, char *argv[]){
   }
   sem_destroy(&s);
   printf("Soma global: %0.32Lf\n", soma_global);
-  printf("%Lf", b);
 }
 
 
